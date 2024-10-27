@@ -1,31 +1,11 @@
-import pygame
-
-FPS = 60
+from .app import App
 
 
 def main():
-    pygame.init()
-    screen = pygame.display.set_mode((1280, 720))
-    clock = pygame.time.Clock()
-    running = True
+    app = App()
 
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        screen.fill("green")
-
-        pygame.draw.circle(
-            screen,
-            "magenta",
-            pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2),
-            40,
-        )
-
-        pygame.display.flip()
-
-        clock.tick(FPS)
+    while app.is_running:
+        app.main_loop()
 
 
 if __name__ == "__main__":
