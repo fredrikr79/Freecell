@@ -1,9 +1,5 @@
 def main():
-    pass
-
-
-def run():
-    print("hello")
+    print("hello world")
 
 
 if __name__ == "__main__":
