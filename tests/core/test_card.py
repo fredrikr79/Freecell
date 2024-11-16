@@ -67,6 +67,6 @@ class TestCard:
 
         with pytest.raises(ValueError):
             card.Value.from_string("12")
-            
+
         with pytest.raises(ValueError):
             card.Value.from_string("a")

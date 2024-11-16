@@ -2,6 +2,7 @@ import pygame
 
 FPS = 60
 
+
 class App:
     FPS: int
     screen: pygame.Surface
@@ -13,11 +14,11 @@ class App:
         self.screen = pygame.display.set_mode((1280, 720))
         self.clock = pygame.Clock()
         self.is_running = True
-    
+
     def main_loop(self):
         self.handle_events()
         self.update_view()
-    
+
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -29,12 +30,12 @@ class App:
         pygame.draw.circle(
             self.screen,
             "magenta",
-            pygame.Vector2(self.screen.get_width() / 2, self.screen.get_height() / 2),
+            pygame.Vector2(
+                self.screen.get_width() / 2, self.screen.get_height() / 2
+            ),
             40,
         )
 
         pygame.display.flip()
 
         self.clock.tick(FPS)
-
-
