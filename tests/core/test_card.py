@@ -52,3 +52,21 @@ class TestCard:
         assert cards == [
             card.Card.from_string(s) for s in card_strings
         ], "All cards must be able to be generated from strings"
+
+        with pytest.raises(ValueError):
+            card.Value(0)
+
+        with pytest.raises(ValueError):
+            card.Value(14)
+
+        with pytest.raises(ValueError):
+            card.Value(-1)
+
+        with pytest.raises(ValueError):
+            card.Value.from_string("1")
+
+        with pytest.raises(ValueError):
+            card.Value.from_string("12")
+            
+        with pytest.raises(ValueError):
+            card.Value.from_string("a")
