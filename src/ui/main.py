@@ -1,9 +1,11 @@
+from .app import App
+
+
 def main():
-    pass
+    app = App()
 
-
-def run():
-    print("hello")
+    while app.is_running:
+        app.main_loop()
 
 
 if __name__ == "__main__":

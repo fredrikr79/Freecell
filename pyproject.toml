@@ -28,7 +28,7 @@ formatting = [
 ]
 
 [project.scripts]
-freecell = "ui.main:run"
+freecell = "ui.main:main"
 
 
 [tool.setuptools.packages.find]
