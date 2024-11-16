@@ -1,5 +1,8 @@
+# direnv
+.direnv/
+
 # Nix
-result
+result/
 
 # IDE
 .vscode
