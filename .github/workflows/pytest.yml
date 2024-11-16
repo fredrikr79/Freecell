@@ -1,0 +1,21 @@
+name: Run Tests with Nix
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v22
+
+      - name: Set up Nix environment
+        run: nix develop --command true
+
+      - name: Run Pytest
+        run: nix develop --command pytest --maxfail=5 --durations=10 --verbose
+
