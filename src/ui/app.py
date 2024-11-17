@@ -9,6 +9,8 @@ from .events import SWITCH_CONTROLLER_EVENT
 class App:
     FPS: int = 60
 
+    SCREEN_SIZE = SCREEN_WIDTH, SCREEN_HEIGHT = 1280, 720
+
     screen: pygame.Surface
     clock: pygame.Clock
 
@@ -18,7 +20,7 @@ class App:
 
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((1280, 720))
+        self.screen = pygame.display.set_mode(App.SCREEN_SIZE)
         self.clock = pygame.Clock()
         self.current_controller = StartController()
         self.is_running = True
