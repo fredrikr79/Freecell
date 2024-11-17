@@ -20,8 +20,8 @@ class StartController(Controller):
     def render(self, screen: pygame.Surface):
         screen.fill(BACKGROUND_COLOR)
 
-        font = pygame.Font("resources/typewriter.ttf", 42)
-        title = font.render("FREECELL", True, BUTTON_COLOR)
+        title_font = pygame.Font("resources/typewriter.ttf", 104)
+        title = title_font.render("FREECELL", True, BUTTON_COLOR)
 
         screen.blit(
             title,
@@ -31,8 +31,8 @@ class StartController(Controller):
             ),
         )
 
-        button_rect_width = screen.width / 6
-        button_rect_height = screen.height / 12
+        button_rect_width = screen.width / 2
+        button_rect_height = screen.height / 4
         button_rect = pygame.Rect(
             screen.width / 2 - button_rect_width / 2,
             screen.height / 3 * 2 - button_rect_height / 2,
@@ -44,7 +44,9 @@ class StartController(Controller):
             screen, BLACK_SUIT_COLOR, button_rect, border_radius=12
         )
 
-        button_text = font.render("PLAY", True, BUTTON_COLOR)
+        button_text_font = pygame.Font("resources/typewriter.ttf", 84)
+
+        button_text = button_text_font.render("PLAY", True, BUTTON_COLOR)
 
         screen.blit(
             button_text,
