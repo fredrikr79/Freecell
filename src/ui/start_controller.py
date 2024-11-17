@@ -3,7 +3,7 @@ import pygame
 from .controller import Controller
 
 
-class GameController(Controller):
+class StartController(Controller):
     def handle_event(self, event: pygame.Event):
         pass
 

@@ -1,0 +1,9 @@
+import pygame
+
+from typing import Protocol
+
+
+class Controller(Protocol):
+    def handle_event(self, event: pygame.Event): ...
+    def update(self): ...
+    def render(self, screen: pygame.Surface): ...

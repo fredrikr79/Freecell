@@ -1,18 +1,26 @@
 import pygame
 
-FPS = 60
+from .start_controller import StartController
+from .controller import Controller
+
+from .events import SWITCH_CONTROLLER_EVENT
 
 
 class App:
-    FPS: int
+    FPS: int = 60
+
     screen: pygame.Surface
     clock: pygame.Clock
+
+    current_controller: Controller
+
     is_running: bool
 
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((1280, 720))
         self.clock = pygame.Clock()
+        self.current_controller = StartController()
         self.is_running = True
 
     def main_loop(self):
@@ -23,19 +31,16 @@ class App:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.is_running = False
+            elif event.type == SWITCH_CONTROLLER_EVENT:
+                self.current_controller = event.new_controller
+            else:
+                self.current_controller.handle_event(event)
 
     def update_view(self):
-        self.screen.fill("green")
+        self.screen.fill("black")
 
-        pygame.draw.circle(
-            self.screen,
-            "magenta",
-            pygame.Vector2(
-                self.screen.get_width() / 2, self.screen.get_height() / 2
-            ),
-            40,
-        )
+        self.current_controller.update()
+        self.current_controller.render(self.screen)
 
         pygame.display.flip()
-
-        self.clock.tick(FPS)
+        self.clock.tick(App.FPS)
