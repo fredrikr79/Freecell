@@ -19,12 +19,14 @@ class Button:
     font_size: Optional[int] = None
     font_path: Optional[str] = None
     text_pad: int = 0
+    shadow_size: int = 0
+    shadow_strength: float = 0.1
 
     def __post_init__(self):
         self.pos = (self.top, self.left)
         self.size = (self.width, self.height)
 
-        self.font = pygame.Font(self.font_path, 1)
+        self.font = pygame.Font(self.font_path)
         self.font_size = self._calculate_font_size()
         self.font.set_point_size(self.font_size)
 
@@ -49,12 +51,21 @@ class Button:
         return font_size
         
     def _render(self):
-        self.surface.fill((0, 0, 0, 0))
+        container_rect = self.surface.fill((0, 0, 0, 0))
 
-        pygame.draw.rect(
+        height = self.height - self.shadow_size
+
+        shadow_rect = pygame.draw.rect(
+            self.surface,
+            self.bg_color.lerp(pygame.Color("black"), self.shadow_strength),
+            (0, self.shadow_size, self.width, height),
+            border_radius=self.border_radius,
+        )
+
+        upper_rect = pygame.draw.rect(
             self.surface,
             self.bg_color,
-            (0, 0, *self.size),
+            (0, 0, self.width, height),
             border_radius=self.border_radius,
         )
 

@@ -44,7 +44,9 @@ class StartController(Controller):
             width, height, top=top, left=left,
             border_radius=12,
             font_path="resources/whitrabt.ttf",
-            text_pad=3
+            text_pad=3,
+            shadow_size=12,
+            shadow_strength=0.05
         )
 
         button.draw(screen)
