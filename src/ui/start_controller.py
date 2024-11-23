@@ -38,15 +38,18 @@ class StartController(Controller):
         width = screen.width / 3
         height = screen.height / 6
         top = screen.height / 3 * 2
-        left = screen.width / 2 - width/2
+        left = screen.width / 2 - width / 2
         button = Button(
             "PLAY",
-            width, height, top=top, left=left,
+            width,
+            height,
+            top=top,
+            left=left,
             border_radius=12,
             font_path="resources/whitrabt.ttf",
             text_pad=3,
             shadow_size=12,
-            shadow_strength=0.05
+            shadow_strength=0.05,
         )
 
         button.draw(screen)

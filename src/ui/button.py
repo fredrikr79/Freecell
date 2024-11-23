@@ -36,8 +36,8 @@ class Button:
         self._render()
 
     def _calculate_font_size(self) -> int:
-        padded_width = self.width - self.text_pad*2
-        padded_height = self.height - self.text_pad*2
+        padded_width = self.width - self.text_pad * 2
+        padded_height = self.height - self.text_pad * 2
         font_size = int(min(padded_width, padded_height))
 
         self.font.set_point_size(font_size)
@@ -49,7 +49,7 @@ class Button:
             text_width, text_height = self.font.size(self.text)
 
         return font_size
-        
+
     def _render(self):
         container_rect = self.surface.fill((0, 0, 0, 0))
 
