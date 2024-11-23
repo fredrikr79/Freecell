@@ -1,5 +1,7 @@
 import pygame
 
+from .button import Button
+
 from .controller import Controller
 
 from .colors import (
@@ -20,7 +22,9 @@ class StartController(Controller):
     def render(self, screen: pygame.Surface):
         screen.fill(BACKGROUND_COLOR)
 
-        title_font = pygame.Font("resources/typewriter.ttf", 104)
+        # TODO: custom button
+
+        title_font = pygame.Font("resources/dealerplate california.otf", 104)
         title = title_font.render("FREECELL", True, BUTTON_COLOR)
 
         screen.blit(
@@ -31,29 +35,16 @@ class StartController(Controller):
             ),
         )
 
-        button_rect_width = screen.width / 2
-        button_rect_height = screen.height / 4
-        button_rect = pygame.Rect(
-            screen.width / 2 - button_rect_width / 2,
-            screen.height / 3 * 2 - button_rect_height / 2,
-            button_rect_width,
-            button_rect_height,
+        width = screen.width / 3
+        height = screen.height / 6
+        top = screen.height / 3 * 2
+        left = screen.width / 2 - width/2
+        button = Button(
+            "PLAY",
+            width, height, top=top, left=left,
+            border_radius=12,
+            font_path="resources/whitrabt.ttf",
+            text_pad=3
         )
 
-        pygame.draw.rect(
-            screen, BLACK_SUIT_COLOR, button_rect, border_radius=12
-        )
-
-        button_text_font = pygame.Font("resources/typewriter.ttf", 84)
-
-        button_text = button_text_font.render("PLAY", True, BUTTON_COLOR)
-
-        screen.blit(
-            button_text,
-            (
-                button_rect.x + button_rect.width / 2 - button_text.width / 2,
-                button_rect.y
-                + button_rect.height / 2
-                - button_text.height / 2,
-            ),
-        )
+        button.draw(screen)
